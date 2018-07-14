@@ -25,6 +25,7 @@ public class SalvarAtividadeLogica implements Logica {
 		} else {
 			if (req.getParameter("bOK") != null) {
 				// pegando os parametros do request
+				// pegando os parametros do request
 				String topico = req.getParameter("topico");
 				String regional = req.getParameter("regional");
 				String sub = (req.getParameter("subestacao"));
@@ -39,29 +40,29 @@ public class SalvarAtividadeLogica implements Logica {
 				String dt_prevista = req.getParameter("dt_prevista");
 
 				if (topico == null || topico.isEmpty()) {
-					erros.add("O topico n„o foi informado!");
+					erros.add("O topico n√£o foi informado!");
 				}
 				if (regional == null || regional.isEmpty() || regional.equalsIgnoreCase("Todas")) {
-					erros.add("A regional n„o foi informada!");
+					erros.add("A regional n√£o foi informada!");
 				}
 				if (subestacao == 0) {
-					erros.add("A subestaÁ„o n„o foi informada!");
+					erros.add("A subesta√ß√£o n√£o foi informada!");
 				}
 				if (alimentador == 0) {
-					erros.add("O alimentador n„o foi informado!");
+					erros.add("O alimentador n√£o foi informado!");
 				}
 				if (acao == null || acao.isEmpty()) {
-					erros.add("A aÁ„o n„o foi informada!");
+					erros.add("A a√ß√£o n√£o foi informada!");
 				}
 				if (dt_prevista == null || dt_prevista.isEmpty()) {
-					erros.add("A data prevista n„o foi informada");
+					erros.add("A data prevista n√£o foi informada");
 				}
 				
 				if (tipoDocumento == null || tipoDocumento.isEmpty()) {
-					erros.add("O tipo do documento n„o foi informado");
+					erros.add("O tipo do documento n√£o foi informado");
 				}
 				if (nDocumento == 0) {
-					erros.add("O n˙mero do documento n„o foi informado");
+					erros.add("O n√∫mero do documento n√£o foi informado");
 				}
 				
 				
@@ -88,7 +89,7 @@ public class SalvarAtividadeLogica implements Logica {
 					TarefaDAO dao = new TarefaDAO();
 					try {
 						dao.adiciona(tarefa);
-						avisos.add("AÁ„o adicionada com sucesso!");
+						avisos.add("A√ß√£o adicionada com sucesso!");
 						url = "mvc?logica=IniciaTarefaLogica&url=/WEB-INF/jsp/tarefa.jsp";
 					} catch (RuntimeException e) {
 						url = "erro.jsp";
