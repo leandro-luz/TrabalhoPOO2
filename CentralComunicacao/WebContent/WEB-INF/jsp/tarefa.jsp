@@ -2,23 +2,38 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@taglib tagdir="/WEB-INF/tags" prefix="proi"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Central de Comunicação</title>
+<title>Central comunicação</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	div.ex1 {
+	    overflow-y: scroll;
+	    position: inherit;
+	}
+</style>
+
 </head>
+
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Cadastro de Ações</title>
-<link href="css/layout.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Cadastro de Ações</title>
+	<link href="css/layout.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/cabecalho.jsp" />
-	<h1>Cadastro de Ações</h1>
+	
+	
 	<c:if test="${mensagens.existeErros}">
 		<div id="erro">
 			<ul>
@@ -37,9 +52,12 @@
 			</ul>
 		</div>
 	</c:if>
+	
+<div class="w3-container">
 	<form method="post" action="mvc?logica=SalvarAtividadeLogica">
-		<table border="1">
-			<tr>
+		<table class="w3-table-all w3-hoverable w3-small">
+		<h3>Cadastro de Ações</h3>
+			<tr class="w3-light-green">
 				<td>Tópico</td>
 				<td>Regional</td>
 				<td>Subestação</td>
@@ -48,6 +66,7 @@
 				<td>Nº Documento</td>
 				<td>Ação</td>
 				<td>Data Prevista</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td><select name="topico">
@@ -77,20 +96,23 @@
 				</select></td>
 				<td><input type="number" name="nDocumento" min="1"></td>
 				<td><textarea placeholder="Máximo 200 caracteres!"
-						class="message" name="acao" id="feedback"></textarea></td> <
-				<td><input type="date" name="dt_prevista" min="2018-06-01"
+						class="message" name="acao" id="feedback"></textarea></td> <td><input type="date" name="dt_prevista" min="2018-06-01"
 					max="2020-12-31"></td>
 
 				<!-- 
 				<td><proi:campoData id="dt_prevista" /></td>
 				- -->
-				<td><input type="submit" name="bOK" value="Salvar" /></td>
+				<td><input class="w3-btn w3-blue-grey" type="submit" name="bOK" value="Salvar" /></td>
 			</tr>
+			<tr></tr>
 		</table>
 	</form>
-	<h1>Lista de Ações</h1>
-
+</div>
+	
+	
+<div class="w3-container">
 	<form method="post" action="mvc?logica=ListaTarefaLogica">
+	<h2>Lista de Ações</h2>
 		Regional:
 		<c:if test="${sessionScope.usuarioLogado.perfil != 1}">
 			<td><select name="regional">
@@ -104,12 +126,12 @@
 					<option value="${sessionScope.usuarioLogado.regional}">${sessionScope.usuarioLogado.regional}</option>
 			</select></td>
 		</c:if>
-		<input type="submit" name="bOK" value="Filtrar" /> <br>
+		<input class="w3-btn w3-blue-grey" type="submit" name="bOK" value="Filtrar" /> <br>
 	</form>
-
+<div class="ex1" >
 	<form method="post" action="mvc?logica=AlteraSituacaoLogica">
-		<table border="1">
-			<tr>
+		<table class="w3-table-all w3-hoverable w3-tiny ">
+			<tr class="w3-light-green">
 				<td>Id</td>
 				<td>Tópico</td>
 				<td>Regional</td>
@@ -125,7 +147,11 @@
 				<td>Status</td>
 				<td>Data Atualização</td>
 				<td>Atualizado por</td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
+
 
 			<c:forEach var="tarefas" items="${tarefas}">
 				<tr>
@@ -173,6 +199,8 @@
 			</c:forEach>
 		</table>
 	</form>
+</div>	
+</div>
 
 </body>
 </html>
